@@ -41,7 +41,7 @@ class AlarmClient(discord.Client):
                     "\t/alarm - Immediatly triggers the alarm\n" \
                     "\t/alarm set [local time in HH:MM in 24h format, UTC]- Set an alarm in UTC time\n" \
                     "\t/toggle - Turn the alarm on and off while not resetting the previously set time\n" \
-                    "\t/countdown - provide the amount of time left until the alarm goes off" \
+                    "\t/countdown - Displays the amount of time left until the alarm goes off\n" \
                     "\t/alarm time - Display the time the alarm is set to go off\n" \
                     "\t/utc now - Display the current time in UTC\n" \
                     "\t/alarm set by - Display the user who set the alarm\n" \
@@ -107,7 +107,7 @@ class AlarmClient(discord.Client):
             if delay < 0:
                 delay += 86400
             # Send a message to the channel to confirm the alarm is set
-            await message.channel.send(f'Time left until the alarm goes off: {str(timedelta(seconds=delay))}')
+            await message.channel.send(f'Time left until the alarm goes off: {str(timedelta(seconds=delay))} sec, {str(timedelta(minutes=delaya/60))} min, {str(timedelta(hours=delay/3600))} hours.')
 
         # Provide the time the alarm is set to go off
         if message.content.startswith("/alarm time"):
